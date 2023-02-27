@@ -1,4 +1,19 @@
-BASIC_AUTH
+Configuration
+
+Before using the middleware, you'll need to configure the following environment variables:
+
+AWS_ACCESS_KEY_ID: The access key for your AWS account.
+AWS_SECRET_ACCESS_KEY: The secret access key for your AWS account.
+S3_BUCKET_NAME: The name of the S3 bucket where your files are stored.
+BASIC_AUTH_USERNAME: The username for the basic authentication.
+BASIC_AUTH_PASSWORD: The password for the basic authentication.
+You can set these environment variables in a .env file in the root of the project:
+
+AWS_ACCESS_KEY_ID=your_aws_access_key_id
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
+S3_BUCKET_NAME=your_s3_bucket_name
+BASIC_AUTH_USERNAME=your_basic_auth_username
+BASIC_AUTH_PASSWORD=your_basic_auth_password
 
 module "monitoring_basic_auth" {
 source = "git::ssh://git@github.com/vitech-team/aws-s3-basic-auth.git?ref=<git tag>"
