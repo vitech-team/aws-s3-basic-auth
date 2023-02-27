@@ -1,0 +1,29 @@
+import base64
+import boto3
+import json
+def lambda_handler(event, context):
+    username = "${monitoring_basic_auth_user}"
+    session = boto3.session.Session()
+    session_client = session.client(
+        service_name='secretsmanager',
+        region_name="${aws_region}"
+    )
+    get_secret_value_response = session_client.get_secret_value(SecretId="${basic_auth_secret}")
+    secret_string=json.loads(get_secret_value_response['SecretString'])
+    password=secret_string["BASIC_AUTH_PASSWORD"]
+    request = event['Records'][0]['cf']['request']
+    headers = request['headers']
+    auth_user_password = (username + ':' + password).encode('utf-8')
+    auth_token = base64.b64encode(auth_user_password).decode()
+    auth_string = 'Basic ' + auth_token
+    if 'authorization' not in headers or headers['authorization'][0]['value'] != auth_string:
+      return {
+        "status": '401',
+        "statusDescription": 'Unauthorized',
+        "body"             : 'Unauthorized',
+        "headers": {
+          'www-authenticate': [
+            {"key": 'WWW-Authenticate', "value":'Basic'}
+          ]}
+      }
+    return request

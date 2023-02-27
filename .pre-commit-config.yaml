@@ -1,0 +1,23 @@
+repos:
+- repo: https://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.77.0 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+  hooks:
+    - id: terraform_fmt
+      args:
+        - --args=-diff=true
+        - --args=-check=false
+        - --args=-recursive
+        - --args=-write=true
+    - id: terraform_validate
+      args:
+        - --args=-json
+        - --args=-no-color
+#    - id: terraform_tflint
+#      args:
+#        - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
+    - id: terraform_docs
+      args:
+        - --hook-config=--path-to-file=README.md
+        - --hook-config=--add-to-existing-file=true
+        - --hook-config=--create-file-if-not-exist=true
+        - --args=--config=.terraform-docs.yml
