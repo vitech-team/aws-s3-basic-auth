@@ -1,8 +1,6 @@
 provider "aws" {
-  alias      = "virginia"
-  region     = "us-east-1"
-  access_key = var.access_key
-  secret_key = var.secret_key
+  alias  = "virginia"
+  region = "us-east-1"
 }
 
 resource "aws_cloudfront_origin_access_identity" "basic_auth_access_identity" {

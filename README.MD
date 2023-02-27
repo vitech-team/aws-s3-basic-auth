@@ -2,15 +2,11 @@ Configuration
 
 Before using the middleware, you'll need to configure the following environment variables:
 
-AWS_ACCESS_KEY_ID: The access key for your AWS account.
-AWS_SECRET_ACCESS_KEY: The secret access key for your AWS account.
 S3_BUCKET_NAME: The name of the S3 bucket where your files are stored.
 BASIC_AUTH_USERNAME: The username for the basic authentication.
 BASIC_AUTH_PASSWORD: The password for the basic authentication.
 You can set these environment variables in a .env file in the root of the project:
 
-AWS_ACCESS_KEY_ID=your_aws_access_key_id
-AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
 S3_BUCKET_NAME=your_s3_bucket_name
 BASIC_AUTH_USERNAME=your_basic_auth_username
 BASIC_AUTH_PASSWORD=your_basic_auth_password
@@ -75,12 +71,10 @@ parameter_prefix = "/example/prefix"
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_access_key"></a> [access\_key](#input\_access\_key) | AWS Access Key | `string` | n/a | yes |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS Region | `string` | `"us-east-1"` | no |
 | <a name="input_basic_auth_domain_name"></a> [basic\_auth\_domain\_name](#input\_basic\_auth\_domain\_name) | Set S3\_basic\_auth\_domain\_name | `string` | n/a | yes |
 | <a name="input_basic_auth_user"></a> [basic\_auth\_user](#input\_basic\_auth\_user) | Username for Basic auth | `string` | n/a | yes |
 | <a name="input_domain_name"></a> [domain\_name](#input\_domain\_name) | Set domain\_name | `string` | n/a | yes |
 | <a name="input_env"></a> [env](#input\_env) | Set environment | `string` | `"prod"` | no |
 | <a name="input_lambda_name"></a> [lambda\_name](#input\_lambda\_name) | Insert lambda name | `string` | `"lambda_function_basic_auth"` | no |
-| <a name="input_secret_key"></a> [secret\_key](#input\_secret\_key) | AWS Secret Key | `string` | n/a | yes |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
